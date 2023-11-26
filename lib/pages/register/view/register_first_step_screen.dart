@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:amitamin/common/common.dart';
 
-import './register_bottom_navigation_bar.dart';
+import 'register_bottom_navigation_bar.dart';
 
-class RegisterSecondStepScreen extends ConsumerStatefulWidget {
-  const RegisterSecondStepScreen({Key? key}) : super(key: key);
+class RegisterFirstStepScreen extends ConsumerStatefulWidget {
+  const RegisterFirstStepScreen({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<RegisterSecondStepScreen> createState() => RegisterSecondStepScreenState();
+  ConsumerState<RegisterFirstStepScreen> createState() => RegisterFirstStepScreenState();
 }
 
-class RegisterSecondStepScreenState extends ConsumerState<RegisterSecondStepScreen> {
+class RegisterFirstStepScreenState extends ConsumerState<RegisterFirstStepScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,9 @@ class RegisterSecondStepScreenState extends ConsumerState<RegisterSecondStepScre
         actionOnPressed: () => context.replace('/login'),
       ),
       bottomNavigationBar: RegisterBottomNavigationBar(
-        backOnTap: () => context.pop(),
-        text: "2 / 3",
-        nextOnTap: () => context.go('/registerFirstStep/registerSecondStep/registerThirdStep'),
+        backDisable: true,
+        text: "1 / 3",
+        nextOnTap: () => context.go('/registerFirstStep/registerSecondStep'),
       ),
       child: WillPopScope(
         onWillPop: () async {
@@ -42,7 +43,7 @@ class RegisterSecondStepScreenState extends ConsumerState<RegisterSecondStepScre
                 children: [
                   const SizedBox(height: 12,),
                   const Text(
-                    "이메일",
+                    "닉네임",
                     style: CustomText.body3,
                   ),
                   const SizedBox(height: 12,),
@@ -52,8 +53,8 @@ class RegisterSecondStepScreenState extends ConsumerState<RegisterSecondStepScre
                         width: MediaQuery.of(context).size.width * 0.6,
                         child: OutlinedInput(
                           onChanged: (String email) {},
-                          hintText: '이메일을 입력하세요',
-                          keyboardType: TextInputType.emailAddress,
+                          hintText: '닉네임을 입력하세요',
+                          keyboardType: TextInputType.text,
                           obscureText: true,
                         ),
                       ),
@@ -62,37 +63,47 @@ class RegisterSecondStepScreenState extends ConsumerState<RegisterSecondStepScre
                         width: MediaQuery.of(context).size.width * 0.3,
                         child: BlueTextButton(
                           onPressed: () {
-                            // TODO : 인증하기 로직 추가
+                            // TODO : 중복확인 로직 추가
 
                           },
-                          text: "인증하기",
+                          text: "중복확인",
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 24,),
                   const Text(
-                    "비밀번호",
+                    "성별",
                     style: CustomText.body3,
                   ),
                   const SizedBox(height: 12,),
-                  OutlinedInput(
-                    onChanged: (String pwd) {},
-                    hintText: '비밀번호를 입력하세요',
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        child: BlueTextButton(
+                          onPressed: () {
+
+                          },
+                          text: "여성",
+                        ),
+                      ),
+                      const Spacer(),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        child: BlueTextButton(
+                          onPressed: () {
+                           
+                          },
+                          text: "남성",
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 24,),
                   const Text(
-                    "비밀번호 확인",
+                    "생년월일",
                     style: CustomText.body3,
-                  ),
-                  const SizedBox(height: 12,),
-                  OutlinedInput(
-                    onChanged: (String pwd) {},
-                    hintText: '비밀번호를 한 번 더 입력하세요',
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
                   ),
                   const SizedBox(height: 12,),
                 ],

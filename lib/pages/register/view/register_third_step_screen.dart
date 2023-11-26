@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:amitamin/common/common.dart';
 
-import './register_bottom_navigation_bar.dart';
+import 'register_bottom_navigation_bar.dart';
 import '../widget/widget.dart';
 
 class RegisterThirdStepScreen extends ConsumerStatefulWidget {

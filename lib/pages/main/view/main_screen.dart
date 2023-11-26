@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amitamin/common/common.dart';
-import 'package:amitamin/home/home.dart';
+import 'package:amitamin/pages/home/home.dart';
 import 'package:go_router/go_router.dart';
 import './main_bottom_navigation_bar.dart';
 

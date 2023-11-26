@@ -1,15 +1,15 @@
-import 'package:amitamin/login/view/find_password_screen.dart';
+import 'package:amitamin/pages/login/view/find_password_screen.dart';
 import 'package:amitamin/route/named_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:amitamin/home/home.dart';
-import 'package:amitamin/analysis/analysis.dart';
-import 'package:amitamin/my/my.dart';
-import 'package:amitamin/main/main.dart';
-import 'package:amitamin/error/error.dart';
-import 'package:amitamin/login/login.dart';
-import 'package:amitamin/register/register.dart';
+import 'package:amitamin/pages/home/home.dart';
+import 'package:amitamin/pages/analysis/analysis.dart';
+import 'package:amitamin/pages/my/my.dart';
+import 'package:amitamin/pages/main/main.dart';
+import 'package:amitamin/pages/error/error.dart';
+import 'package:amitamin/pages/login/login.dart';
+import 'package:amitamin/pages/register/register.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) => goRouteList());
 

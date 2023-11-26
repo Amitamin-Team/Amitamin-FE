@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:amitamin/home/home.dart';
+import 'package:amitamin/pages/home/home.dart';
 import 'package:amitamin/common/common.dart';
 import 'package:intl/intl.dart';
 
@@ -24,11 +24,15 @@ class FatigueCheckScreenState extends ConsumerState<FatigueCheckScreen> {
       appBar: DefaultAppBar(
         title: '피로도 체크하기',
         leadingDisable: false,
-        leadingOnPressed: () => context.pop(),
+        leadingOnPressed: () {
+          ref.watch(updateFatigueScoreProvider.notifier).setScore(0);
+          context.pop();
+        },
         actionDisable: true,
       ),
       child: WillPopScope(
         onWillPop: () async {
+          ref.watch(updateFatigueScoreProvider.notifier).setScore(0);
           context.pop();
           return false;
         },
