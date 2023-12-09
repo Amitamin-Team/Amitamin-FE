@@ -25,7 +25,7 @@ class RegisterFirstStepScreenState extends ConsumerState<RegisterFirstStepScreen
         actionOnPressed: () => context.replace('/login'),
       ),
       bottomNavigationBar: RegisterBottomNavigationBar(
-        backDisable: true,
+        backOnTap: () => context.replace('/login'),
         text: "1 / 3",
         nextOnTap: () => context.go('/registerFirstStep/registerSecondStep'),
       ),

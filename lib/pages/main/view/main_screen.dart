@@ -21,9 +21,8 @@ class MainScreenState extends ConsumerState<MainScreen> {
     final bottomIndex = ref.watch(bottomIndexProvider);
 
     final List<PreferredSizeWidget?> appbar = [
-      homeScreenAppBar(
-        context: context,
-        //today: '11월 25일 (금)',
+      // TODO: 알림을 여기서 받아 뿌려줄지, 아니면 HomeScreenAppBar 자체에서 처리할지 결정해야 함
+      const HomeScreenAppBar(
         alarmExist: false,
       ),
       AppBar(),
