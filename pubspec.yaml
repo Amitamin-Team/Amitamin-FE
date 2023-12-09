@@ -71,6 +71,7 @@ flutter:
     - assets/icons/state/
     - assets/icons/bottom/
     - assets/icons/home/
+    - assets/icons/my/
     - assets/images/
 
   fonts:

@@ -8,3 +8,4 @@ const String findPassword = 'findPassword';
 const String registerFirstStep = 'registerFirstStep';
 const String registerSecondStep = 'registerSecondStep';
 const String registerThirdStep = 'registerThirdStep';
+const String profileSetting = 'profileSetting';

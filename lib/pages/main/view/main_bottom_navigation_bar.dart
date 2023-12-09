@@ -13,7 +13,7 @@ class MainBottomNavigationBar extends StatelessWidget {
 
   final WidgetRef ref;
   final int index;
-  final VoidCallback onTap;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class MainBottomNavigationBar extends StatelessWidget {
           label: '홈',
           onPressed: () {
             ref.watch(bottomIndexProvider.notifier).setIndex(0);
-            onTap;
+            onTap();
           },
         ),
         BottomItems(
@@ -54,7 +54,7 @@ class MainBottomNavigationBar extends StatelessWidget {
           label: '분석',
           onPressed: () {
             ref.watch(bottomIndexProvider.notifier).setIndex(1);
-            onTap;
+            onTap();
           },
         ),
         BottomItems(
@@ -73,7 +73,7 @@ class MainBottomNavigationBar extends StatelessWidget {
           label: '마이페이지',
           onPressed: () {
             ref.watch(bottomIndexProvider.notifier).setIndex(2);
-            onTap;
+            onTap();
           },
         ),
       ],

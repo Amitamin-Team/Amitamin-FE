@@ -24,30 +24,40 @@ GoRouter goRouteList() {
         GoRoute(
           path: '/login',
           name: login,
-          builder: (context, state) => LoginScreen(key: state.pageKey,),
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: LoginScreen(key: state.pageKey,),
+          ),
           routes: [
             GoRoute(
               parentNavigatorKey: rootNavKey,
               path: 'findPassword',
               name: findPassword,
-              builder: (context, state) => FindPasswordScreen(key: state.pageKey,),
+              pageBuilder: (context, state) => NoTransitionPage(
+                child: FindPasswordScreen(key: state.pageKey,),
+              ),
             ),
           ]
         ),
         GoRoute(
           path: '/registerFirstStep',
           name: registerFirstStep,
-          builder: (context, state) => RegisterFirstStepScreen(key: state.pageKey,),
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: RegisterFirstStepScreen(key: state.pageKey,),
+          ),
           routes: [
             GoRoute(
               path: 'registerSecondStep',
               name: registerSecondStep,
-              builder: (context, state) => RegisterSecondStepScreen(key: state.pageKey,),
+              pageBuilder: (context, state) => NoTransitionPage(
+                child: RegisterSecondStepScreen(key: state.pageKey,),
+              ),
               routes: [
                 GoRoute(
                   path: 'registerThirdStep',
                   name: registerThirdStep,
-                  builder: (context, state) => RegisterThirdStepScreen(key: state.pageKey,),
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    child: RegisterThirdStepScreen(key: state.pageKey,),
+                  ),
                 ),
               ]
             ),
@@ -55,32 +65,55 @@ GoRouter goRouteList() {
         ),
         ShellRoute(
             navigatorKey: shellNavKey,
-            builder: (context, state, child) {
-              return MainScreen(child: child);
+            // builder: (context, state, child) {
+            //   return MainScreen(child: child);
+            // },
+            pageBuilder: (context, state, child) {
+              return NoTransitionPage(
+                child: MainScreen(child: child,),
+              );
             },
             routes: <RouteBase> [
               GoRoute(
                   path: '/home',
                   name: home,
-                  builder: (context, state) => HomeScreen(key: state.pageKey,),
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    child: HomeScreen(key: state.pageKey,),
+                  ),
                   routes: [
                     GoRoute(
                       parentNavigatorKey: rootNavKey,
                       path: 'fatigueCheck',
                       name: fatigueCheck,
-                      builder: (context, state) => FatigueCheckScreen(key: state.pageKey,),
+                      pageBuilder: (context, state) => NoTransitionPage(
+                        child: FatigueCheckScreen(key: state.pageKey,),
+                      ),
                     ),
                   ],
               ),
               GoRoute(
-                  path: '/analysis',
-                  name: analysis,
-                  builder: (context, state) => AnalysisScreen(key: state.pageKey,)
+                path: '/analysis',
+                name: analysis,
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: AnalysisScreen(key: state.pageKey,),
+                ),
               ),
               GoRoute(
-                  path: '/my',
-                  name: my,
-                  builder: (context, state) => MyScreen(key: state.pageKey,)
+                path: '/my',
+                name: my,
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: MyScreen(key: state.pageKey,),
+                ),
+                routes: [
+                  GoRoute(
+                    parentNavigatorKey: rootNavKey,
+                    path: 'profileSetting',
+                    name: profileSetting,
+                    pageBuilder: (context, state) => NoTransitionPage(
+                      child: ProfileSettingScreen(key: state.pageKey,),
+                    ),
+                  ),
+                ],
               ),
             ]
         ),

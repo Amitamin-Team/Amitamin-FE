@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amitamin/common/common.dart';
 import 'package:amitamin/pages/home/home.dart';
-import 'package:go_router/go_router.dart';
 import './main_bottom_navigation_bar.dart';
+import 'package:go_router/go_router.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({Key? key, required this.child}) : super(key: key);
@@ -26,48 +26,49 @@ class MainScreenState extends ConsumerState<MainScreen> {
         alarmExist: false,
       ),
       AppBar(),
-      AppBar()
+      null
     ];
+
+    void changeTabScreen() {
+      switch(ref.watch(bottomIndexProvider)) {
+        case 0:
+          return context.go('/home');
+        case 1:
+          return context.go('/analysis');
+        case 2:
+          return context.go('/my');
+      }
+    }
+
+    void onPressBackButton() {
+      if(Platform.isAndroid) {
+        if(ref.watch(bottomIndexProvider) != 0) {
+          ref.watch(bottomIndexProvider.notifier).setIndex(0);
+          changeTabScreen();
+          return;
+        }
+
+        onWillPopClose();
+      }
+    }
 
     return DefaultMainLayout(
       appBar: appbar[bottomIndex],
       bottomNavigationBar: MainBottomNavigationBar(
         ref: ref,
         index: bottomIndex,
-        onTap: () => _selectedIndex(context, bottomIndex),
+        onTap: () {
+          changeTabScreen();
+        },
       ),
       child: WillPopScope(
         onWillPop: () async {
-          _onPressBackButton(ref, bottomIndex);
+          onPressBackButton();
           return false;
         },
         child: widget.child,
       ),
     );
-  }
-
-  void _selectedIndex(BuildContext context, int index) {
-    switch(index) {
-      case 0:
-        return context.go('/home');
-      case 1:
-        return context.go('/analysis');
-      case 2:
-        return context.go('/my');
-    }
-  }
-
-  void _onPressBackButton(WidgetRef ref, int idx) {
-    if(idx != 0) {
-      ref.watch(bottomIndexProvider.notifier).setIndex(0);
-      // TODO : route 설정
-
-      return;
-    }
-
-    if(Platform.isAndroid) {
-      onWillPopClose();
-    }
   }
 }
 
